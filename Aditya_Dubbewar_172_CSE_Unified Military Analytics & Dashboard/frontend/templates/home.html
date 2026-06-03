@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+{% block title %}Home - UMACD: Unified Military Analytics and Comparison Dashboard{% endblock %}
+
+{% block content %}
+{% if current_user.is_authenticated %}
+<!-- ===== AUTHENTICATED USER HOME CONTENT ===== -->
+<div class="d-flex flex-column gap-5 py-5" style="min-height: 80vh;">
+
+    <!-- 1st Section: Hero Box -->
+    <section class="container" data-aos="fade-up">
+        <div class="glass-card p-5 text-center position-relative overflow-hidden"
+            style="border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); border-top: 4px solid var(--accent-gold);">
+            <div class="position-absolute top-50 start-50 translate-middle w-100 h-100 rounded-circle"
+                style="background: radial-gradient(circle, rgba(245, 158, 11, 0.05) 0%, transparent 70%); z-index: 0;">
+            </div>
+            <div class="position-relative z-1">
+                <h1 class="display-2 fw-bold mb-2" style="letter-spacing: -2px;">
+                    <span
+                        style="background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">UMACD</span>
+                </h1>
+                <h3 class="fw-light mb-4 text-white-50">Unified Military Analytics and Comparison Dashboard</h3>
+                <p class="lead mb-5 mx-auto text-light opacity-75" style="max-width: 800px; line-height: 1.8;">
+                    Welcome to UMACD. This platform is dedicated to visualizing and analyzing global military
+                    capabilities and defense economics. By exploring comprehensive datasets on Defense Budgets, Power
+                    Index Ranks, assets distribution, and coalition strengths, you can uncover the strategic balances
+                    that shape our world today.
+                </p>
+                <div class="d-flex gap-4 justify-content-center flex-wrap">
+                    <a href="{{ url_for('dashboard') }}" class="btn btn-gold btn-lg px-5 py-3 shadow">
+                        <i class="bi bi-bar-chart-fill me-2"></i>View Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 3rd Section: Detailed Inequality Analysis -->
+    <section class="container" data-aos="fade-up">
+        <h2 class="fw-bold mb-4 text-center">Detailed Defense Capabilities Analysis</h2>
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="glass-card p-4 h-100 position-relative border-0" style="background: rgba(15, 23, 42, 0.4);">
+                    <div class="position-absolute top-0 start-0 w-100"
+                        style="height: 4px; background: var(--accent-gold); border-top-left-radius: inherit; border-top-right-radius: inherit;">
+                    </div>
+                    <h5 class="text-gold mb-3 mt-2"><i class="bi bi-cash-coin me-2"></i>Defense Budget per Capita</h5>
+                    <p class="text-secondary small" style="line-height: 1.7;">
+                        <strong>Definition:</strong> Total Defense Budget divided by the population. It represents the
+                        average military expenditure per person.<br><br>
+                        <strong>Unit:</strong> US Dollars ($)<br><br>
+                        <strong>Significance:</strong> Acts as the baseline indicator of national military investment
+                        and
+                        defense priorities.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="glass-card p-4 h-100 position-relative border-0" style="background: rgba(15, 23, 42, 0.4);">
+                    <div class="position-absolute top-0 start-0 w-100"
+                        style="height: 4px; background: var(--accent-blue); border-top-left-radius: inherit; border-top-right-radius: inherit;">
+                    </div>
+                    <h5 class="text-blue mb-3 mt-2"><i class="bi bi-shield-fill me-2"></i>Power Index Rank</h5>
+                    <p class="text-secondary small" style="line-height: 1.7;">
+                        <strong>Definition:</strong> A comprehensive metric assessing overall military capability. It
+                        evaluates everything from personnel numbers to logistical capacity and equipment.<br><br>
+                        <strong>Unit:</strong> Index Score (Lower is better)<br><br>
+                        <strong>Significance:</strong> A score of 0 represents perfect military capability. It provides
+                        a
+                        holistic view of a nation's ability to wage conventional warfare.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="glass-card p-4 h-100 position-relative border-0" style="background: rgba(15, 23, 42, 0.4);">
+                    <div class="position-absolute top-0 start-0 w-100"
+                        style="height: 4px; background: var(--accent-emerald); border-top-left-radius: inherit; border-top-right-radius: inherit;">
+                    </div>
+                    <h5 class="text-emerald mb-3 mt-2"><i class="bi bi-layers-fill me-2"></i>Asset Distribution</h5>
+                    <p class="text-secondary small" style="line-height: 1.7;">
+                        <strong>Definition:</strong> The distribution of defense assets across different military
+                        branches.<br><br>
+                        <strong>Unit:</strong> Percentage (%)<br><br>
+                        <strong>Branches Overview:</strong><br>
+                        - <strong class="text-danger">Army:</strong> Ground combat forces.<br>
+                        - <strong class="text-warning">Navy:</strong> Maritime and coastal defense.<br>
+                        - <strong class="text-info">Air Force:</strong> Aerial superiority and support.<br>
+                        - <strong class="text-primary">Cyber:</strong> Digital and electronic warfare.<br>
+                        - <strong class="text-success">Space:</strong> Extra-terrestrial and satellite ops.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="glass-card p-4 h-100 position-relative border-0" style="background: rgba(15, 23, 42, 0.4);">
+                    <div class="position-absolute top-0 start-0 w-100"
+                        style="height: 4px; background: var(--accent-rose); border-top-left-radius: inherit; border-top-right-radius: inherit;">
+                    </div>
+                    <h5 class="text-rose mb-3 mt-2"><i class="bi bi-activity me-2"></i>Budget-to-GDP Ratio</h5>
+                    <p class="text-secondary small" style="line-height: 1.7;">
+                        <strong>Definition:</strong> The percentage of a nation's Gross Domestic Product that is
+                        allocated to its defense budget.<br><br>
+                        <strong>Unit:</strong> Percentage (%)<br><br>
+                        <strong>Significance:</strong> Indicates the economic burden of defense spending and a nation's
+                        prioritization of military capability relative to its overall economy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</div>
+
+{% else %}
+<!-- ===== MINIMALIST GUEST LOGIN PORTAL ===== -->
+<div class="minimal-wrapper d-flex flex-column align-items-center justify-content-center" style="min-height: 80vh;">
+    <!-- Brand Branding -->
+    <div class="text-center mb-5" data-aos="fade-down">
+        <h1 class="display-2 fw-bold mb-1" style="letter-spacing: -4px;">
+            <span
+                style="background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">UMACD</span>
+        </h1>
+        <p class="text-secondary tracking-widest text-uppercase small">Unified Military Analytics and Comparison
+            Dashboard</p>
+    </div>
+
+    <!-- Tabbed Login Card -->
+    <div class="login-gateway-card glass-card p-0 overflow-hidden" data-aos="zoom-in"
+        style="width: 100%; max-width: 450px; border-radius: 30px;">
+        <!-- Tab Headers -->
+        <div class="d-flex border-bottom" style="border-color: rgba(255,255,255,0.05) !important;">
+            <button class="flex-grow-1 py-3 border-0 transition-all fw-bold small text-uppercase active-tab"
+                id="btnUserTab" onclick="switchLogin('user')">
+                <i class="bi bi-person-fill me-2"></i>User Login
+            </button>
+            <button class="flex-grow-1 py-3 border-0 transition-all fw-bold small text-uppercase inactive-tab"
+                id="btnAdminTab" onclick="switchLogin('admin')" style="background: rgba(0,0,0,0.2);">
+                <i class="bi bi-shield-lock-fill me-1"></i>Admin Login
+            </button>
+        </div>
+
+        <div class="p-5">
+            <!-- User Form -->
+            <div id="userLoginForm" class="login-form-container">
+                <div class="text-center mb-4">
+                    <div class="portal-badge mb-2">Consumer Access</div>
+                    <p class="text-secondary x-small">Sign in to explore interactive UMACD dashboard</p>
+                </div>
+                <form action="{{ url_for('login') }}" method="POST">
+                    <input type="hidden" name="login_type" value="user">
+                    <div class="mb-3">
+                        <label class="form-label-custom small">Email Address</label>
+                        <input type="email" name="email" class="form-control form-control-glass py-2"
+                            placeholder="john@example.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label-custom small">Password</label>
+                        <div class="input-group">
+                            <input type="password" name="password" id="passUserHome"
+                                class="form-control form-control-glass py-2" placeholder="••••••••" required
+                                style="border-right: none;">
+                            <button type="button" class="btn form-control-glass"
+                                onclick="togglePassword('passUserHome', 'eyeUserHome')"
+                                style="border-left: none; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                <i class="bi bi-eye" id="eyeUserHome"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-gold btn-lg w-100 py-3 shadow mb-3">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Sign In as User
+                    </button>
+                    <div class="text-center">
+                        <span class="text-muted extra-small">New to UMACD?</span>
+                        <a href="{{ url_for('register') }}"
+                            class="text-warning extra-small fw-bold text-decoration-none ms-1">Create Account</a>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Admin Form -->
+            <div id="adminLoginForm" class="login-form-container d-none">
+                <div class="text-center mb-4">
+                    <div class="portal-badge admin mb-2">Restricted Access</div>
+                    <p class="text-secondary x-small">Secure gateway for platform administrators</p>
+                </div>
+                <form action="{{ url_for('login') }}" method="POST">
+                    <input type="hidden" name="login_type" value="admin">
+                    <div class="mb-3">
+                        <label class="form-label-custom small">Admin Email</label>
+                        <input type="email" name="email" class="form-control form-control-glass py-2"
+                            placeholder="admin@umacd.com" required>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label-custom small">Security Credential</label>
+                        <div class="input-group">
+                            <input type="password" name="password" id="passAdminHome"
+                                class="form-control form-control-glass py-2" placeholder="••••••••" required
+                                style="border-right: none;">
+                            <button type="button" class="btn form-control-glass"
+                                onclick="togglePassword('passAdminHome', 'eyeAdminHome')"
+                                style="border-left: none; border-top-left-radius: 0; border-bottom-left-radius: 0;">
+                                <i class="bi bi-eye" id="eyeAdminHome"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="btn btn-outline-glass btn-lg w-100 py-3 mb-3 border-warning text-warning">
+                        <i class="bi bi-key-fill me-2"></i>Authorize Admin
+                    </button>
+                    <div class="text-center">
+                        <p class="text-muted extra-small mb-0 opacity-50">System governance only. Unauthorized access is
+                            prohibited.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</style>
+
+<script>
+    function togglePassword(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.className = 'bi bi-eye-slash';
+        } else {
+            input.type = 'password';
+            icon.className = 'bi bi-eye';
+        }
+    }
+    function switchLogin(type) {
+        const userBtn = document.getElementById('btnUserTab');
+        const adminBtn = document.getElementById('btnAdminTab');
+        const userForm = document.getElementById('userLoginForm');
+        const adminForm = document.getElementById('adminLoginForm');
+
+        if (type === 'user') {
+            userBtn.classList.add('active-tab');
+            userBtn.classList.remove('inactive-tab');
+            adminBtn.classList.add('inactive-tab');
+            adminBtn.classList.remove('active-tab');
+            userForm.classList.remove('d-none');
+            adminForm.classList.add('d-none');
+        } else {
+            adminBtn.classList.add('active-tab');
+            adminBtn.classList.remove('inactive-tab');
+            userBtn.classList.add('inactive-tab');
+            userBtn.classList.remove('active-tab');
+            adminForm.classList.remove('d-none');
+            userForm.classList.add('d-none');
+        }
+    }
+</script>
+{% endif %}
+{% endblock %}
